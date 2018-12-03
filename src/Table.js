@@ -1,16 +1,13 @@
 import React from "react";
 import { Table, Button } from "antd";
 import data from "./data.json";
-import allColumns from "./Columns";
-
-const activeColumns = columns =>
-  columns.filter(c => c.active).map(c => c.column);
+import { allColumns, sortedColumns, activeColumns } from "./Columns";
 
 export default class StaffTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      columns: allColumns,
+      columns: sortedColumns,
       table: {
         loading: false,
         size: "small"

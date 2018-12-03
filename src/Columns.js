@@ -41,11 +41,7 @@ const ActionsMenu = user => (
     <Menu.Item key={"delete" + user.id}>
       <Popconfirm
         title="Do you want to delete this user?"
-        onConfirm={() =>
-          this.props.deleteUser(user, () =>
-            this.props.getUsers({ withTags: true, withRoleInstances: true })
-          )
-        }
+        onConfirm={() => ""}
         onCancel={() => console.log("Cancel delete")}
         okText="Yes"
         cancelText="No"
@@ -91,4 +87,10 @@ const allColumns = [
 
 const sortColumns = columns => columns.sort((a, b) => a.position - b.position);
 
-export default sortColumns(allColumns);
+const sortedColumns = sortColumns(allColumns);
+// export default sortColumns(allColumns);
+
+const activeColumns = columns =>
+  columns.filter(c => c.active).map(c => c.column);
+
+export { sortedColumns, allColumns, activeColumns };
